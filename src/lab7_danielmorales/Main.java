@@ -766,7 +766,7 @@ public class Main extends javax.swing.JFrame {
                     break;
                 default:
                     link += (char) (48 + r.nextInt(10));
-                    break; // Fin If
+                    break; 
                 }
         }
         return link;
@@ -944,51 +944,51 @@ public class Main extends javax.swing.JFrame {
 
     private void favActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favActionPerformed
         // TODO add your handling code here:
-        DefaultListModel modelo
+        DefaultListModel modeloLista
                 = (DefaultListModel) listaCarpetas.getModel();
         adminFavoritos adFav = new adminFavoritos("./Favoritos.drive");
         adFav.cargarArchivo();
         adminUnidad adUni = new adminUnidad("./Unidad.drive");
         adUni.cargarArchivo();
-        Object o = modelo.getElementAt(listaCarpetas.getSelectedIndex());
+        Object o = modeloLista.getElementAt(listaCarpetas.getSelectedIndex());
         if (listaCarpetas.getSelectedIndex() >= 0) {
             adUni.getUnidad().remove(listaCarpetas.getSelectedIndex());
             adUni.escribirArchivo();
             adFav.getFavoritos().add(o);
             adFav.escribirArchivo();
-            modelo.remove(listaCarpetas.getSelectedIndex());
+            modeloLista.remove(listaCarpetas.getSelectedIndex());
 
         }
-        listaCarpetas.setModel(modelo);
+        listaCarpetas.setModel(modeloLista);
     }//GEN-LAST:event_favActionPerformed
 
     private void elimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elimActionPerformed
         // TODO add your handling code here:
         adminUnidad adUni = new adminUnidad("./Unidad.drive");
         adUni.cargarArchivo();
-        DefaultListModel modelo
+        DefaultListModel modeloLista
                 = (DefaultListModel) listaCarpetas.getModel();
         adminTrash adPape = new adminTrash("./Papelera.drive");
         adPape.cargarArchivo();
-        Object o = modelo.getElementAt(listaCarpetas.getSelectedIndex());
+        Object o = modeloLista.getElementAt(listaCarpetas.getSelectedIndex());
         if (listaCarpetas.getSelectedIndex() >= 0) {
 
             adPape.getPapelera().add(o);
             adPape.escribirArchivo();
-            modelo.remove(listaCarpetas.getSelectedIndex());
+            modeloLista.remove(listaCarpetas.getSelectedIndex());
 
         }
-        listaCarpetas.setModel(modelo);
+        listaCarpetas.setModel(modeloLista);
     }//GEN-LAST:event_elimActionPerformed
 
     private void jmi_descargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_descargarActionPerformed
-        // TODO add your handling code here:
-        DefaultListModel modelo
+
+        DefaultListModel modeloLista
                 = (DefaultListModel) listaCarpetas.getModel();
         adminUnidad adUni = new adminUnidad("./Unidad.drive");
         adUni.cargarArchivo();
         if (listaCarpetas.getSelectedIndex() >= 0) {
-            if (modelo.getElementAt(listaCarpetas.getSelectedIndex()) instanceof Carpeta) {
+            if (modeloLista.getElementAt(listaCarpetas.getSelectedIndex()) instanceof Carpeta) {
                 int aux = 0;
                 int cont;
                 for (Archivo o : ((Carpeta) adUni.getUnidad().get(listaCarpetas.getSelectedIndex())).getArchivos()) {
@@ -1006,7 +1006,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_descargarActionPerformed
 
     private void elimPermaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elimPermaActionPerformed
-        // TODO add your handling code here:
+
         try {
             DefaultListModel modelo
                     = (DefaultListModel) listaCarpetas.getModel();
@@ -1026,7 +1026,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_elimPermaActionPerformed
 
     private void reestablecerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reestablecerActionPerformed
-        // TODO add your handling code here:
+
         try {
             adminUnidad adUni = new adminUnidad("./Unidad.drive");
             adUni.cargarArchivo();
@@ -1050,7 +1050,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_reestablecerActionPerformed
 
     private void favsssActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favsssActionPerformed
-        // TODO add your handling code here:
+
         adminFavoritos adFav = new adminFavoritos("./Favoritos.drive");
         adFav.cargarArchivo();
         DefaultListModel modelo
@@ -1076,7 +1076,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
-        // TODO add your handling code here:
+
         try {
             adminCarpeta adCar = new adminCarpeta("./Carpetas.drive");
             adCar.cargarArchivo();
