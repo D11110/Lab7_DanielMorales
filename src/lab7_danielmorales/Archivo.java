@@ -1,19 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lab7_danielmorales;
 
-/**
- *
- * @author danie
- */
-public class Archivo {
+import java.io.Serializable;
+
+public class Archivo implements Serializable{
     private String nombre;
     private String link;
     private String extension;
     private Double tamaño;
+    private static final long SerialVersionUID = 777L;
 
     public Archivo(String nombre, String link, String extension, Double tamaño) {
         this.nombre = nombre;
@@ -56,7 +50,7 @@ public class Archivo {
 
     @Override
     public String toString() {
-        return "Archivo{" + "nombre=" + nombre + ", link=" + link + ", extension=" + extension + ", tama\u00f1o=" + tamaño + '}';
+        return "Archivo{" + "nombre=" + nombre + ", link=" + link + '}';
     }
     
     

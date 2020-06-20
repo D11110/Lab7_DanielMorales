@@ -1,25 +1,31 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lab7_danielmorales;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-/**
- *
- * @author danie
- */
-public class Carpeta {
+public class Carpeta implements Serializable{
     private String nombre;
     private String link;
-    private ArrayList archivos = new ArrayList();
+    private ArrayList<Archivo> archivos = new ArrayList();
     private ArrayList carpetas = new ArrayList();
+    private static final long SerialVersionUID = 777L;
 
     public Carpeta(String nombre, String link) {
         this.nombre = nombre;
         this.link = link;
+    }
+    
+    public Carpeta(String nombre, String link, ArrayList carpetas, ArrayList archivos){
+        this.nombre = nombre;
+        this.link = link;
+        setCarpetas(carpetas);
+        setArchivos(archivos);
+    }
+    
+    public Carpeta(String nombre, String link, ArrayList archivos){
+        this.nombre = nombre;
+        this.link = link;
+        setArchivos(archivos);
     }
 
     public Carpeta() {
@@ -41,7 +47,7 @@ public class Carpeta {
         this.link = link;
     }
 
-    public ArrayList getArchivos() {
+    public ArrayList<Archivo> getArchivos() {
         return archivos;
     }
 
@@ -59,7 +65,7 @@ public class Carpeta {
 
     @Override
     public String toString() {
-        return "Carpeta{" + "nombre=" + nombre + ", link=" + link + ", archivos=" + archivos + ", carpetas=" + carpetas + '}';
+        return "Carpeta{" + "nombre=" + nombre + ", link=" + link + '}';
     }
     
      
