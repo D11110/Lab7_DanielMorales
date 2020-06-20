@@ -983,26 +983,7 @@ public class Main extends javax.swing.JFrame {
 
     private void jmi_descargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_descargarActionPerformed
 
-        DefaultListModel modeloLista
-                = (DefaultListModel) listaCarpetas.getModel();
-        adminUnidad adUni = new adminUnidad("./Unidad.drive");
-        adUni.cargarArchivo();
-        if (listaCarpetas.getSelectedIndex() >= 0) {
-            if (modeloLista.getElementAt(listaCarpetas.getSelectedIndex()) instanceof Carpeta) {
-                int aux = 0;
-                int cont;
-                for (Archivo o : ((Carpeta) adUni.getUnidad().get(listaCarpetas.getSelectedIndex())).getArchivos()) {
-                    aux += o.getTamaño();
-                }
-                System.out.println(aux);
-                cont = aux / 10;
-                HiloPDescarga hd = new HiloPDescarga(pb_hiloDescarga, cont, tablaDescargas, (Carpeta) adUni.getUnidad().get(listaCarpetas.getSelectedIndex()));
-                Thread proceso1 = new Thread(hd);
-                proceso1.start();
-            } else {
-                JOptionPane.showMessageDialog(null, "No es valido");
-            }
-        }
+        
     }//GEN-LAST:event_jmi_descargarActionPerformed
 
     private void elimPermaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elimPermaActionPerformed
