@@ -37,7 +37,7 @@ public class Main extends javax.swing.JFrame {
 
         jd_crearCarpeta = new javax.swing.JDialog();
         jLabel18 = new javax.swing.JLabel();
-        tf_nomcarpeta = new javax.swing.JTextField();
+        tf_nombreCarpetaa = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         jd_subirArchivoenCarpeta = new javax.swing.JDialog();
@@ -85,7 +85,6 @@ public class Main extends javax.swing.JFrame {
         listaCarpetas = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaDescargas = new javax.swing.JTable();
-        pb_hiloDescarga = new javax.swing.JProgressBar();
         pb_hiloEstado = new javax.swing.JProgressBar();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -131,7 +130,7 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(jd_crearCarpetaLayout.createSequentialGroup()
                         .addComponent(jLabel18)
                         .addGap(18, 18, 18)
-                        .addComponent(tf_nomcarpeta, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(tf_nombreCarpetaa, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton10))
                 .addContainerGap(108, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_crearCarpetaLayout.createSequentialGroup()
@@ -145,7 +144,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jd_crearCarpetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(tf_nomcarpeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_nombreCarpetaa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
@@ -503,11 +502,6 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tablaDescargas);
 
-        pb_hiloDescarga.setBackground(new java.awt.Color(51, 51, 51));
-        pb_hiloDescarga.setForeground(new java.awt.Color(0, 204, 204));
-        pb_hiloDescarga.setString("");
-        pb_hiloDescarga.setStringPainted(true);
-
         pb_hiloEstado.setName(""); // NOI18N
         pb_hiloEstado.setString("");
         pb_hiloEstado.setStringPainted(true);
@@ -578,9 +572,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(65, 65, 65)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pb_hiloDescarga, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -593,10 +585,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(pb_hiloDescarga, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(pb_hiloEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -734,7 +723,7 @@ public class Main extends javax.swing.JFrame {
             adUni.cargarArchivo();
             adminCarpeta adCar = new adminCarpeta("./Carpetas.drive");
             adCar.cargarArchivo();
-            String name = tf_nomcarpeta.getText();
+            String name = tf_nombreCarpetaa.getText();
             String link = "dive.google.com/";
             link = linkk(link);
             Carpeta c = new Carpeta(name, link);
@@ -1164,13 +1153,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPopupMenu jmenu_unidad;
     private javax.swing.JMenuItem jmi_descargar;
     private javax.swing.JList<String> listaCarpetas;
-    private javax.swing.JProgressBar pb_hiloDescarga;
     private javax.swing.JProgressBar pb_hiloEstado;
     private javax.swing.JMenuItem reestablecer;
     private javax.swing.JTable tablaDescargas;
     private javax.swing.JTextField tf_nombreArchivo;
     private javax.swing.JTextField tf_nombreArchivoSubir;
-    private javax.swing.JTextField tf_nomcarpeta;
+    private javax.swing.JTextField tf_nombreCarpetaa;
     private javax.swing.JFormattedTextField tf_tamArchivo;
     private javax.swing.JFormattedTextField tf_tamArchivoSubir;
     // End of variables declaration//GEN-END:variables
