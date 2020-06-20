@@ -505,7 +505,7 @@ public class Main extends javax.swing.JFrame {
 
         pb_hiloDescarga.setBackground(new java.awt.Color(51, 51, 51));
         pb_hiloDescarga.setForeground(new java.awt.Color(0, 204, 204));
-        pb_hiloDescarga.setString("Descargas");
+        pb_hiloDescarga.setString("");
         pb_hiloDescarga.setStringPainted(true);
 
         pb_hiloEstado.setName(""); // NOI18N
@@ -831,12 +831,21 @@ public class Main extends javax.swing.JFrame {
 
     public static String genLink(String link) {
         for (int i = 0; i < 10; i++) {
-            if (i == 2 || i == 5 || i == 8) {
-                link += (char) (97 + r.nextInt(26));
-            } else if (i == 0 || i == 3 || i == 6 || i == 9) {
-                link += (char) (65 + r.nextInt(26));
-            } else {
-                link += (char) (48 + r.nextInt(10));
+            switch (i) {
+                case 2:
+                case 5:
+                case 8:
+                    link += (char) (97 + r.nextInt(26));
+                    break;
+                case 0:
+                case 3:
+                case 6:
+                case 9:
+                    link += (char) (65 + r.nextInt(26));
+                    break;
+                default:
+                    link += (char) (48 + r.nextInt(10));
+                    break;
             }
         }
         return link;
@@ -1019,17 +1028,17 @@ public class Main extends javax.swing.JFrame {
     private void reestablecerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reestablecerActionPerformed
         // TODO add your handling code here:
         try {
-            adminUnidad au = new adminUnidad("./Unidad.drive");
-            au.cargarArchivo();
+            adminUnidad adUni = new adminUnidad("./Unidad.drive");
+            adUni.cargarArchivo();
             DefaultListModel modelo
                     = (DefaultListModel) listaCarpetas.getModel();
-            adminTrash ap = new adminTrash("./Papelera.drive");
-            ap.cargarArchivo();
+            adminTrash adPape = new adminTrash("./Papelera.drive");
+            adPape.cargarArchivo();
             if (listaCarpetas.getSelectedIndex() >= 0) {
-                au.getUnidad().add(modelo.getElementAt(listaCarpetas.getSelectedIndex()));
-                au.escribirArchivo();
-                ap.getPapelera().remove(listaCarpetas.getSelectedIndex());
-                ap.escribirArchivo();
+                adUni.getUnidad().add(modelo.getElementAt(listaCarpetas.getSelectedIndex()));
+                adUni.escribirArchivo();
+                adPape.getPapelera().remove(listaCarpetas.getSelectedIndex());
+                adPape.escribirArchivo();
                 modelo.remove(listaCarpetas.getSelectedIndex());
 
             }
@@ -1042,18 +1051,18 @@ public class Main extends javax.swing.JFrame {
 
     private void favsssActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favsssActionPerformed
         // TODO add your handling code here:
-        adminFavoritos af = new adminFavoritos("./Favoritos.drive");
-        af.cargarArchivo();
+        adminFavoritos adFav = new adminFavoritos("./Favoritos.drive");
+        adFav.cargarArchivo();
         DefaultListModel modelo
                 = (DefaultListModel) listaCarpetas.getModel();
-        adminTrash ap = new adminTrash("./Papelera.drive");
-        ap.cargarArchivo();
+        adminTrash adTrash = new adminTrash("./Papelera.drive");
+        adTrash.cargarArchivo();
         Object o = modelo.getElementAt(listaCarpetas.getSelectedIndex());
         if (listaCarpetas.getSelectedIndex() >= 0) {
-            af.getFavoritos().remove(listaCarpetas.getSelectedIndex());
-            af.escribirArchivo();
-            ap.getPapelera().add(o);
-            ap.escribirArchivo();
+            adFav.getFavoritos().remove(listaCarpetas.getSelectedIndex());
+            adFav.escribirArchivo();
+            adTrash.getPapelera().add(o);
+            adTrash.escribirArchivo();
             modelo.remove(listaCarpetas.getSelectedIndex());
 
         }
@@ -1069,15 +1078,15 @@ public class Main extends javax.swing.JFrame {
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
         // TODO add your handling code here:
         try {
-            adminCarpeta ac = new adminCarpeta("./Carpetas.drive");
-            ac.cargarArchivo();
+            adminCarpeta adCar = new adminCarpeta("./Carpetas.drive");
+            adCar.cargarArchivo();
             Carpeta primera, segunda;
             primera = (Carpeta) carpSele1.getSelectedItem();
             segunda = (Carpeta) carpSele2.getSelectedItem();
             primera.setLink("dive.google.com/" + segunda.getNombre() + primera.getLink().substring(14, 19));
             segunda.getCarpetas().add(primera);
-            ac.getListaCarpeta().add(segunda);
-            ac.escribirArchivo();
+            adCar.getListaCarpeta().add(segunda);
+            adCar.escribirArchivo();
             JOptionPane.showMessageDialog(null, "El elemento fue agregado exitosamente");
             jd_addCarpettoCarpet1.setVisible(false);
         } catch (Exception e) {
